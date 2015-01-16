@@ -10,3 +10,22 @@
      <li><%= number %></li>
   <% end%>
 </ul>
+<form action="/additional_number" method="post">
+  <div class="form-group">
+    <label for="additional_number">Enter an additional phone number:</label>
+    <input id="additional_number" name="additional_number" class="form-control" type="text" placeholder="Additional Number">
+    <input id="contact_id" name="contact_id" type="hidden" value= <%= @contact.id %>>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Cell
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Work
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Home
+    </label>
+  </div>
+  <button type="submit" class="btn btn-success">Enter additional phone number</button>
+</form>
+
+<a href="/"><button type="submit" class="btn btn-info">Return to main page</a></button>
