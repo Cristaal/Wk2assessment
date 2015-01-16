@@ -1,0 +1,12 @@
+
+<h1>Contact Information</h1>
+
+<p>NAME: <%= @contact.name %> </p>
+
+<ul>
+<p>NUMBERS:  </p>
+
+  <% @contact.numbers.each() do |number| %>
+     <li><%= number %></li>
+  <% end%>
+</ul>
