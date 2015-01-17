@@ -3,9 +3,9 @@
 
 <p>NAME: <%= @contact.name %> </p>
 
-<ul>
-<p>NUMBERS:  </p>
 
+<p>NUMBERS:  </p>
+<ul>
   <% @contact.numbers.each() do |number| %>
      <li><%= number %></li>
   <% end%>
