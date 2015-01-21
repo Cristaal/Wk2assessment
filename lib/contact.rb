@@ -25,6 +25,10 @@ class Contact
     @@contacts = []
   end
 
+  define_method(:add_number_type) do |number_type|
+    @numbers.push(number_type)
+  end
+
   define_singleton_method(:find) do |id|
     found_contact = nil
     @@contacts.each() do |contact|
