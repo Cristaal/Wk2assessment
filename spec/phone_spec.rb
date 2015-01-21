@@ -3,22 +3,27 @@ require ('contact')
 require('phone')
 require('pry')
 
-  describe('#phone') do
-    it("returns an additional phone number") do
-      Phone.clear()
-      test_number = Phone.new({:phone => "530.828.2222"})
-      test_number.save()
-      expect(test_number.phone()).to(eq("530.828.2222"))
-    end
-  end
-
-  describe('#id') do
-    it("returns the id of the phone number") do
-      Phone.clear()
-      test_number = Phone.new({:phone => "530.828.2222"})
-      test_number.save()
-      expect(test_number.id()).to(eq(1))
-    end
-  end
-
+describe(Phone) do
   
+  describe(".all") do
+    it("is empty at first") do
+      expect(Phone.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it("saves phone number types to the class variable array") do
+      test_number = Phone.new({:number_type => "work"})
+      test_number.save()
+      expect(Phone.all()).to(eq([test_number]))
+    end
+  end
+
+
+  describe('#number_type') do
+    it("returns the type of phone number") do
+      test_number = Phone.new({:number_type => "work"})
+      expect(test_number.number_type()).to(eq("work"))
+    end
+  end
+end
