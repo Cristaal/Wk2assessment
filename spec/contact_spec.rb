@@ -55,4 +55,15 @@ describe(Contact) do
       expect(Contact.find(test_contact.id())).to(eq(test_contact))
     end
   end
+
+  describe("#add_number_type") do
+    it("adds the number type to the array of the contact it is called on") do
+      test_contact = Contact.new({:name => "Michael"})
+      test_contact.save()
+      test_number = Phone.new({:number_type => "work"})
+      test_number.save()
+      test_contact.add_number_type(test_number)
+      expect(test_contact.numbers()).to(eq([test_number]))
+    end
+  end
 end
