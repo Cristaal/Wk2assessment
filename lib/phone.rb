@@ -1,22 +1,23 @@
 require('pry')
 class Phone
-  attr_reader(:phone, :id)
-  @@phones = []
+  @@phone_types = []
+
+  attr_reader(:number_type, :id)
 
   define_method(:initialize) do |attributes|
-    @phone = attributes.fetch(:phone)
-    @id = @@contacts.length().+(1)
+    @number_type = attributes.fetch(:number_type)
+    @id = @@phone_types.length().+(1)
   end
 
   define_singleton_method(:all) do
-    @@contacts
-  end
-
-  define_method(:save) do
-    @@contacts.push(Phone)
+    @@phone_types
   end
 
   define_singleton_method(:clear) do
-    @@contacts = []
+    @@phone_types = []
+  end
+
+  define_method(:save) do
+    @@phone_types.push(self)
   end
 end
