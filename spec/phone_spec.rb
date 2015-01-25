@@ -26,7 +26,7 @@ describe(Phone) do
 
   describe("#id") do
     it("returns the id of the phone number type.") do
-      test_number = Phone.new({:number_type => "cell"})
+      test_number = Phone.new({:number_type => "cell", :number => "520.331.8888"})
       expect(test_number.id()).to(eq(1))
     end
   end
@@ -34,7 +34,7 @@ describe(Phone) do
 
   describe('#save') do
     it("saves phone number types to the class variable array") do
-      test_number = Phone.new({:number_type => "work"})
+      test_number = Phone.new({:number_type => "work", :number => "503.247.7777"})
       test_number.save()
       expect(Phone.all()).to(eq([test_number]))
     end
@@ -43,7 +43,7 @@ describe(Phone) do
 
   describe('#number_type') do
     it("returns the type of phone number") do
-      test_number = Phone.new({:number_type => "work"})
+      test_number = Phone.new({:number_type => "work", :number => "503.247.7777"})
       test_number.save()
       expect(test_number.number_type()).to(eq("work"))
     end
