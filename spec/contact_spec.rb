@@ -19,8 +19,8 @@ describe(Contact) do
   describe('#add_number') do
     it("saves phone numbers to an array for a contact") do
       test_number = Contact.new({:name => "Michael"})
-      test_number.add_number("520.331.8888")
-      expect(test_number.numbers()).to(eq(["520.331.8888"]))
+      test_number.add_number(Phone.new({:number_type => "cell", :number => "530.828.9999"}))
+      expect(test_number.numbers().first.number).to(eq("530.828.9999"))
     end
   end
 
@@ -53,17 +53,6 @@ describe(Contact) do
       test_contact = Contact.new({:name => "Michael"})
       test_contact.save()
       expect(Contact.find(test_contact.id())).to(eq(test_contact))
-    end
-  end
-
-  describe("#add_number_type") do
-    it("adds the number type to the array of the contact it is called on") do
-      test_contact = Contact.new({:name => "Michael"})
-      test_contact.save()
-      test_number = Phone.new({:number_type => "work"})
-      test_number.save()
-      test_contact.add_number_type(test_number)
-      expect(test_contact.numbers()).to(eq([test_number]))
     end
   end
 end
