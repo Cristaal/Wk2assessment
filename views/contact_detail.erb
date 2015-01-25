@@ -7,24 +7,21 @@
 <p>NUMBERS:  </p>
 <ul>
   <% @contact.numbers.each() do |number| %>
-     <li><%= number %></li>
+     <li><%= number.number %> <%=number.number_type %></li>
   <% end%>
 </ul>
 <form action="/additional_number" method="post">
   <div class="form-group">
-    <label for="additional_number">Enter an additional phone number:</label>
-    <input id="additional_number" name="additional_number" class="form-control" type="text" placeholder="Additional Number">
-    <input id="contact_id" name="contact_id" type="hidden" value= <%= @contact.id %>>
-    <buttton type="submit" class="btn btn-success">Enter additional phone number</button>
+    <label for="number">Enter a phone number:</label>
+    <input id="number" name="number" class="form-control" type="text" placeholder="Phone Number">
+    <input name="contact_id" type="hidden" value= <%= @contact.id %>>
   </div>
-</form>
-
-<form action="/number_type" method="post">
   <div class="form-group">
-    <label for="number_type">Enter the type of phone number:</label>
-    <input id="number_type" name="number_type" class="form-control" type="text" placeholder="Cell, home, or work">
-  <button type="submit" class="btn btn-success">Enter number type</button>
+    <label for="number_type">Enter a phone number type:</label>
+    <input id="number_type" name="number_type" class="form-control" type="text" placeholder="Work, Home, or Cell">
   </div>
+
+  <button type="submit" class="btn btn-info">Enter Contact Information</button>
 </form>
 
 <a href="/"><button type="submit" class="btn btn-info">Return to main page</a></button>
