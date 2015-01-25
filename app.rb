@@ -2,6 +2,7 @@ require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
 require('./lib/contact')
+require('./lib/phone')
 require('pry')
 
 get('/') do
@@ -10,7 +11,6 @@ end
 
 post("/index") do
   contact_entry = Contact.new({:name => params.fetch('contact_name')})
-  contact_entry.add_number(params.fetch('contact_number'))
   contact_entry.save()
   erb(:index)
 end
@@ -22,6 +22,6 @@ end
 
 post("/additional_number") do
   @contact = Contact.find(params.fetch('contact_id').to_i())
-  @contact.add_number(params.fetch('additional_number'))
+  @contact.add_number(Phone.new({:number_type => params.fetch('number_type'), :number => params.fetch('number')}))
   erb(:contact_detail)
 end
